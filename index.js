@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import colors from "colors";
 
+dotenv.config();
 const app = express();
 
 app.get("/", (req, res) => {
