@@ -7,8 +7,18 @@ import Typography from "@mui/material/Typography";
 import Linkmui from "@mui/material/Link";
 import GlobalStyles from "@mui/material/GlobalStyles";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { logout } from "../actions/userActions";
 
 export default function Header() {
+  const dispatch = useDispatch();
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { userInfo } = userLogin;
+
+  const logoutHandler = () => {
+    dispatch(logout());
+  };
   return (
     <React.Fragment>
       <GlobalStyles
@@ -37,10 +47,9 @@ export default function Header() {
             <Linkmui
               variant="button"
               color="text.primary"
-             
               sx={{ my: 1, mx: 1.5 }}
             >
-              <Link to='/cart'>Cart</Link>
+              <Link to="/cart">Cart</Link>
             </Linkmui>
             <Linkmui
               variant="button"
@@ -48,12 +57,22 @@ export default function Header() {
               href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              <Link to='/orders'>Orders</Link>
+              <Link to="/orders">Orders</Link>
             </Linkmui>
           </nav>
-          <Button  variant="outlined" sx={{ my: 1, mx: 1.5 }}>
-          <Link to='/login'>Login</Link>
-          </Button>
+          {userInfo ? (
+            <Button
+              variant="outlined"
+              sx={{ my: 1, mx: 1.5 }}
+              onClick={logoutHandler}
+            >
+              Logout
+            </Button>
+          ) : (
+            <Button variant="outlined" sx={{ my: 1, mx: 1.5 }}>
+              <Link to="/login">Login</Link>
+            </Button>
+          )}
         </Toolbar>
       </AppBar>
     </React.Fragment>

@@ -12,16 +12,49 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { FormHelperText } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { register } from "../actions/userActions";
+import { useAlert } from "react-alert";
 
 export default function RegisterScreen() {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+  const alert = useAlert();
+  const location = useLocation();
+
+
+
+  let errorStatus = false;
+
+
+  const userRegister = useSelector((state) => state.userRegister);
+  const { loading, error, userInfo } = userRegister;
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  React.useEffect(() => {
+    if(error){
+      alert.error(error);
+      }
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, userInfo, redirect,error]);
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
     console.log({
+      name: data.get("name"),
       email: data.get("email"),
       password: data.get("password"),
     });
+    if (!errorStatus) {
+      dispatch(
+        register(data.get("name"), data.get("email"), data.get("password"))
+      );
+    }
   };
 
   return (
@@ -68,19 +101,19 @@ export default function RegisterScreen() {
                 placeholder="Enter Name"
                 fullWidth
                 id="name"
-                style={{ zIndex: 10, marginTop: 5,}}
-                size='small'
+                style={{ zIndex: 10, marginTop: 5 }}
+                size="small"
                 autoFocus
               />
             </Grid>
-            
+
             <Grid item xs={12}>
-            <FormHelperText
-              style={{ zIndex: 10, color: " #545454" }}
-              id="email"
-            >
-              Email
-            </FormHelperText>
+              <FormHelperText
+                style={{ zIndex: 10, color: " #545454" }}
+                id="email"
+              >
+                Email
+              </FormHelperText>
               <TextField
                 required
                 fullWidth
@@ -88,7 +121,7 @@ export default function RegisterScreen() {
                 placeholder="Enter Email Address"
                 name="email"
                 size="small"
-                style={{ zIndex: 10, marginTop: 5,  }}
+                style={{ zIndex: 10, marginTop: 5 }}
                 autoComplete="email"
               />
             </Grid>
@@ -105,13 +138,12 @@ export default function RegisterScreen() {
                 name="password"
                 placeholder="Enter Password"
                 type="password"
-                size='small'
+                size="small"
                 style={{ zIndex: 10, marginTop: 5, marginBottom: "1rem" }}
                 id="password"
                 autoComplete="new-password"
               />
             </Grid>
-         
           </Grid>
           <Button
             type="submit"
@@ -124,7 +156,7 @@ export default function RegisterScreen() {
           <Grid container justifyContent="flex-end">
             <Grid item>
               <Linkmui href="#" variant="body2">
-                <Link to='/login'>Already have an account? Sign in</Link>
+                <Link to="/login">Already have an account? Sign in</Link>
               </Linkmui>
             </Grid>
           </Grid>
