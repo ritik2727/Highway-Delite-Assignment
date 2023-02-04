@@ -10,9 +10,37 @@ import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { FormHelperText } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { login } from "../actions/userActions";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useAlert } from "react-alert";
 
 export default function LoginScreen() {
+  const navigate = useNavigate();
+  const alert = useAlert();
+  const location = useLocation();
+  const dispatch = useDispatch();
+  const [errors, setErrors] = React.useState();
+  const [formErrors, setFormErrors] = React.useState({}); //error
+
+  let errorStatus = false;
+  const [loginfailure, setloginfailure] = React.useState(false);
+
+  const userLogin = useSelector((state) => state.userLogin);
+  const { loading, error, userInfo } = userLogin;
+
+  const redirect = location.search ? location.search.split("=")[1] : "/";
+
+  React.useEffect(() => {
+    if(error){
+    alert.error(error);
+    }
+    if (userInfo) {
+      navigate(redirect);
+    }
+  }, [navigate, userInfo, redirect,error]);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -20,6 +48,10 @@ export default function LoginScreen() {
       email: data.get("email"),
       password: data.get("password"),
     });
+    // validate(data);
+    if (!errorStatus) {
+      dispatch(login(data.get("email"), data.get("password")));
+    }
   };
 
   return (
