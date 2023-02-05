@@ -1,7 +1,5 @@
 # Highway-delite-assignment
 
-
-
 ## Develop an e-commerce application with the following features.
 
 - List at least 10 items that are available for purchase.
@@ -20,14 +18,14 @@ Create a .env file in then root and add the following
 ```
 NODE_ENV = development
 PORT = 5000
-MONGO_URI = url 
+MONGO_URI = url
 JWT_SECRET = ABC123
 PASS=your email password for nodemailer
 ```
 
 
-```
 ### Install Dependencies (frontend & backend)
+
 ```
 npm install
 cd frontend
@@ -44,31 +42,21 @@ npm run server
 ```
 
 ## Build & Deploy
+
 ```
 # Create frontend prod build
 cd frontend
-
 npm run build
 ```
 
-
-
-## TECHNOLOGIES :-
-
- <code><img height="50" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" title="React"></code>
- <code><img height="50" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg" title="NodeJS"></code>
- <code><img height="50" src="https://www.vectorlogo.zone/logos/expressjs/expressjs-ar21.svg" title="ExpressJS"></code>
- <code><img height="50" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg" title="MongoDB"></code>
-
-
-
+There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
 
 ## Frontend Port - 3000
 
 - Technologies used are <b>Reactjs, Material UI, Redux, Axios, CSS, react-alert.</b>
 
 - Home page display all products,
-- User can add,remove item  and increase qty in cart,
+- User can add,remove item and increase qty in cart,
 - Redux is used for global state management
 - React router dom to manage the routing
 - various react hooks like useState(for state update), useEffect(for data rendering) is used
@@ -78,7 +66,6 @@ npm run build
 - material ui and its icons are used to build the UI framework and the styling of the pages
 - order page shows the previous order history.
 - user receives a mail after placing the order and can see his order details in the order page
-
 
 ## Backend Port - 5000
 
@@ -94,5 +81,3 @@ npm run build
 - bcryptjs is used to generate salt and hash the password for extra security
 - MongoDb database is used to store the data using mongoose
 - concurrently is used to run the backend and the frontend server simultaneously
-
-
