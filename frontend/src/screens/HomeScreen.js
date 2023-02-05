@@ -9,15 +9,16 @@ import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import Container from "@mui/material/Container";
 import { useAlert } from "react-alert";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { listProducts } from "../actions/productActions";
+import { addToCart } from "../actions/cartActions";
 
 const cards = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
 export default function HomeScreen() {
 
   const alert = useAlert();
-
+  const navigate = useNavigate()
   const dispatch = useDispatch();
 
   const params = useParams();
@@ -36,6 +37,12 @@ export default function HomeScreen() {
   const {  error, products } = productList;
 
   console.log(products);
+
+  const addToCartHandler = (product) => {
+    console.log(product)
+    dispatch(addToCart(product))
+    navigate('/cart')
+}
   return (
     <>
       <main>
@@ -82,7 +89,7 @@ export default function HomeScreen() {
                     </Typography>
                   </CardContent>
                   <CardActions>
-                    <Button fullWidth variant="contained">
+                    <Button fullWidth variant="contained" onClick={()=> addToCartHandler(item._id)}>
                       ADD To Cart
                     </Button>
                   </CardActions>

@@ -9,6 +9,8 @@ import OrderHistoryScreen from './screens/OrderHistoryScreen';
 import Colors from './components/Colors';
 import Header from './components/Header';
 import RegisterScreen from './screens/RegisterScreen';
+import CartScreen from './screens/CartScreen';
+import ShippingScreen from './screens/ShippingScreen';
 
 function App() {
   return (
@@ -22,7 +24,8 @@ function App() {
             <Routes>
              
               <Route path="/" element={<HomeScreen />} />
-           
+              <Route path="/cart" element={<CartScreen />} />
+              <Route path="/shipping" element={<ShippingScreen />} />
              < Route path='/login' element={<LoginScreen />}  />
              < Route path='/register' element={<RegisterScreen />}  />
               <Route path='/admin/orderlist' element={<OrderHistoryScreen  />}  />
