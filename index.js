@@ -6,6 +6,7 @@ import productRoutes from "./backend/routes/productRoutes.js";
 import { notFound, errorHandler } from "./backend/middleware/errorMiddleware.js";
 import morgan from "morgan";
 import ConnectDB from './backend/config/db.js';
+import orderRoutes from "./backend/routes/orderRoutes.js";
 
 dotenv.config();
 ConnectDB();
@@ -26,6 +27,7 @@ app.use(express.json());
 
 app.use("/api/products", productRoutes);
 app.use("/api/users",userRoutes);
+app.use("/api/orders", orderRoutes);
 
 
 app.use(notFound);
