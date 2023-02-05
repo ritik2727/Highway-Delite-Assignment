@@ -55,11 +55,10 @@ const CartScreen = () => {
   //   navigate("/login?redirect=/shipping")
   // }
   const checkoutHandler = () => {
-    if(!userInfo){
-      navigate('/login')
-    }
-    else{
-        navigate('/shipping')
+    if (!userInfo) {
+      navigate("/login");
+    } else {
+      navigate("/shipping");
     }
   };
 
@@ -68,7 +67,10 @@ const CartScreen = () => {
       <Col md={8}>
         {cartItems.length === 0 ? (
           <Typography variant="h5" style={{ marginTop: "2em" }}>
-            Your cart is empty <Link to="/" style={{color:'blue'}}>Go Back</Link>
+            Your cart is empty{" "}
+            <Link to="/" style={{ color: "blue" }}>
+              Go Back
+            </Link>
           </Typography>
         ) : (
           <ListGroup variant="flush">

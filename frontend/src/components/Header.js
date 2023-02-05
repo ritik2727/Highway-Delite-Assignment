@@ -32,8 +32,8 @@ export default function Header() {
         sx={{ borderBottom: (theme) => `1px solid ${theme.palette.divider}` }}
       >
         <Toolbar sx={{ flexWrap: "wrap" }}>
-          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1 }}>
-            Lukjury Shop
+          <Typography variant="h6" color="inherit" noWrap sx={{ flexGrow: 1, }}>
+          <Link to="/" style={{color:'blue'}}>Lukjury Shop</Link>
           </Typography>
           <nav>
             <Linkmui
@@ -42,7 +42,7 @@ export default function Header() {
               href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              Features
+              <Link to="/">Home</Link>
             </Linkmui>
             <Linkmui
               variant="button"
