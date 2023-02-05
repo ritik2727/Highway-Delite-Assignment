@@ -54,10 +54,9 @@ export default function Header() {
             <Linkmui
               variant="button"
               color="text.primary"
-              href="#"
               sx={{ my: 1, mx: 1.5 }}
             >
-              <Link to="/orders">Orders</Link>
+              <Link to="/myorderlist">Orders</Link>
             </Linkmui>
           </nav>
           {userInfo ? (

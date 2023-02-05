@@ -26,7 +26,7 @@ function App() {
             <Route path="/shipping" element={<ShippingScreen />} />
             <Route path="/login" element={<LoginScreen />} />
             <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/admin/orderlist" element={<OrderHistoryScreen />} />
+            <Route path="/myorderlist" element={<OrderHistoryScreen />} />
           </Routes>
         </Container>
       </main>
