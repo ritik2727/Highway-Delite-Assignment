@@ -49,8 +49,6 @@ cd frontend
 npm run build
 ```
 
-There is a Heroku postbuild script, so if you push to Heroku, no need to build manually for deployment to Heroku
-
 ## Frontend Port - 3000
 
 - Technologies used are <b>Reactjs, Material UI, Redux, Axios, CSS, react-alert.</b>
