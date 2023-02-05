@@ -47,10 +47,13 @@ npm run server
 ```
 # Create frontend prod build
 cd frontend
+
 npm run build
 ```
 
-**TECHNOLOGIES :-**
+
+
+## TECHNOLOGIES :-
 
  <code><img height="50" src="https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg" title="React"></code>
  <code><img height="50" src="https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg" title="NodeJS"></code>
@@ -58,7 +61,9 @@ npm run build
  <code><img height="50" src="https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg" title="MongoDB"></code>
 
 
- ## Frontend Port - 3000
+
+
+## Frontend Port - 3000
 
 - Technologies used are <b>Reactjs, Material UI, Redux, Axios, CSS, react-alert.</b>
 
