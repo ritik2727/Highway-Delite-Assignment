@@ -8,9 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { Typography } from "@mui/material";
 import Colors from "../components/Colors";
 
-import {
-  CART_LIST_RESET,
-} from "../constants/cartConstants";
+import { CART_LIST_RESET } from "../constants/cartConstants";
 import { ORDER_CREATE_RESET } from "../constants/orderConstants";
 import { USER_DETAILS_RESET } from "../constants/userConstant";
 import { createOrder } from "../actions/orderActions";
@@ -30,13 +28,6 @@ const ShippingScreen = () => {
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
 
-  // const cartList = useSelector((state) => state.cartList);
-  // const { cartItems } = cartList;
- 
-  // console.log(cartItems.cartTotal);
-
-  
-
   const orderCreate = useSelector((state) => state.orderCreate);
   const { order, success, error } = orderCreate;
 
@@ -44,16 +35,7 @@ const ShippingScreen = () => {
     if (userInfo && !userInfo.token) {
       navigate("/");
     } else {
-   
-     
-      // if (successShippingAdded) {
-      //   alert.success('Shipping Address Added')
-      //   dispatch({ type: CART_SAVE_SHIPPING_ADDRESS_RESET })
-      // }
-     
       if (success) {
-  
-  
         // alert.success("Order Placed ");
         navigate(`/order/63df3f7147301e02e8e382c1`);
         dispatch({ type: USER_DETAILS_RESET });
@@ -73,7 +55,6 @@ const ShippingScreen = () => {
     // cartList
   ]);
 
- 
   const submitHandler = (e) => {
     e.preventDefault();
     dispatch(saveShippingAddress({ address, city, postalCode, country }));
@@ -86,7 +67,7 @@ const ShippingScreen = () => {
         itemsPrice: cart.itemsPrice,
         totalPrice: cart.cartItems
           .reduce((acc, item) => acc + item.qty * item.price, 0)
-          .toFixed(2)
+          .toFixed(2),
       })
     );
   };

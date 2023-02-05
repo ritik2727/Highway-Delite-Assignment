@@ -12,7 +12,6 @@ import {
 } from "react-bootstrap";
 
 import { addToCart, removeFromCart } from "../actions/cartActions";
-import { CART_CLEAR_ITEMS } from "../constants/cartConstants";
 import { Typography } from "@mui/material";
 import Colors from "../components/Colors";
 
@@ -29,31 +28,14 @@ const CartScreen = () => {
   const { cartItems } = cart;
   console.log(cartItems);
 
-  //   const cartSaveDb = useSelector((state) => state.cartSaveDb);
-  //   const { success } = cartSaveDb;
   const userLogin = useSelector((state) => state.userLogin);
   const { userInfo } = userLogin;
-
-  useEffect(() => {
-    // if (productId) {
-    //   dispatch(addToCart(productId, qty));
-    // }
-    // if (success) {
-    //   navigate("/login?redirect=/shipping");
-    // //   dispatch({ type: CART_DB_RESET });
-    //   localStorage.removeItem('cartItems')
-    //   dispatch({ type: CART_CLEAR_ITEMS })
-    // }
-  }, [dispatch, productId, qty, navigate]);
 
   const removeFromCartHandler = (id) => {
     dispatch(removeFromCart(id));
     navigate("/cart");
   };
 
-  // const checkoutHandler = () => {
-  //   navigate("/login?redirect=/shipping")
-  // }
   const checkoutHandler = () => {
     if (!userInfo) {
       navigate("/login");

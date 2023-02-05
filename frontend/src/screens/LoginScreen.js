@@ -22,11 +22,8 @@ export default function LoginScreen() {
   const alert = useAlert();
   const location = useLocation();
   const dispatch = useDispatch();
-  const [errors, setErrors] = React.useState();
-  const [formErrors, setFormErrors] = React.useState({}); //error
 
   let errorStatus = false;
-  const [loginfailure, setloginfailure] = React.useState(false);
 
   const userLogin = useSelector((state) => state.userLogin);
   const { loading, error, userInfo } = userLogin;
@@ -34,13 +31,13 @@ export default function LoginScreen() {
   const redirect = location.search ? location.search.split("=")[1] : "/";
 
   React.useEffect(() => {
-    if(error){
-    alert.error(error);
+    if (error) {
+      alert.error(error);
     }
     if (userInfo) {
       navigate(redirect);
     }
-  }, [navigate, userInfo, redirect,error]);
+  }, [navigate, userInfo, redirect, error]);
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
@@ -70,7 +67,6 @@ export default function LoginScreen() {
       <CssBaseline />
       <Box
         sx={{
-          
           marginTop: 8,
           display: "flex",
           flexDirection: "column",
@@ -84,50 +80,49 @@ export default function LoginScreen() {
           Sign in
         </Typography>
         <Box component="form" onSubmit={handleSubmit} Validate sx={{ mt: 1 }}>
-        <Grid container spacing={2}>
+          <Grid container spacing={2}>
             <Grid item xs={12}>
-          <FormHelperText style={{ zIndex: 10, color: " #545454" }} id="email">
-            Email
-          </FormHelperText>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            id="email"
-            // label="Email Address"
-            name="email"
-            style={{ zIndex: 10, marginTop: 5, marginBottom: "1rem" }}
-            size="small"
-            autoComplete="email"
-            placeholder="Enter Email"
-            autoFocus
-          />
+              <FormHelperText
+                style={{ zIndex: 10, color: " #545454" }}
+                id="email"
+              >
+                Email
+              </FormHelperText>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                id="email"
+                // label="Email Address"
+                name="email"
+                style={{ zIndex: 10, marginTop: 5, marginBottom: "1rem" }}
+                size="small"
+                autoComplete="email"
+                placeholder="Enter Email"
+                autoFocus
+              />
+            </Grid>
+            <Grid item xs={12}>
+              <FormHelperText
+                style={{ zIndex: 10, color: " #545454" }}
+                id="password"
+              >
+                Password
+              </FormHelperText>
+              <TextField
+                margin="normal"
+                required
+                fullWidth
+                name="password"
+                style={{ zIndex: 10, marginTop: 5, marginBottom: "1rem" }}
+                placeholder="Enter Password"
+                type="password"
+                id="password"
+                size="small"
+                autoComplete="current-password"
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12}>
-          <FormHelperText
-            style={{ zIndex: 10, color: " #545454" }}
-            id="password"
-          >
-            Password
-          </FormHelperText>
-          <TextField
-            margin="normal"
-            required
-            fullWidth
-            name="password"
-            style={{ zIndex: 10, marginTop: 5, marginBottom: "1rem" }}
-            placeholder="Enter Password"
-            type="password"
-            id="password"
-            size="small"
-            autoComplete="current-password"
-          />
-          </Grid>
-          </Grid>
-          {/* <FormControlLabel
-            control={<Checkbox value="remember" color="primary" />}
-            label="Remember me"
-          /> */}
           <Button
             type="submit"
             fullWidth
@@ -137,10 +132,9 @@ export default function LoginScreen() {
             Sign In
           </Button>
           <Grid container>
-    
             <Grid item>
               <Linkmui href="#" variant="body2">
-                <Link to='/register'>{"Don't have an account? Sign Up"}</Link>
+                <Link to="/register">{"Don't have an account? Sign Up"}</Link>
               </Linkmui>
             </Grid>
           </Grid>
